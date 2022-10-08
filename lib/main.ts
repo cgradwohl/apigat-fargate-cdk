@@ -30,7 +30,7 @@ export class MainCdkStack extends Stack {
         memoryLimitMiB: 2048,
         publicLoadBalancer: false,
         taskImageOptions: {
-          image: ContainerImage.fromAsset(path.join(__dirname, "../src/")),
+          image: ContainerImage.fromAsset(path.join(__dirname, "../api/")),
         },
       }
     );
