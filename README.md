@@ -81,10 +81,6 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 - `bastion host`
   - a bastion host allows inbound access to specific IP addresses and authenticated users
 
-## Examples
-
-- https://blog.developer.adobe.com/deploy-microservices-using-aws-ecs-fargate-and-api-gateway-1b5e71129338
-
 ## Repo Setup Notes
 
 1. `mkdir repo-name; cd repo-name; npx cdk init app --language typescript`
