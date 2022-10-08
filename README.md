@@ -84,3 +84,17 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 ## Examples
 
 - https://blog.developer.adobe.com/deploy-microservices-using-aws-ecs-fargate-and-api-gateway-1b5e71129338
+
+## Repo Setup Notes
+
+1. `mkdir repo-name; cd repo-name; npx cdk init app --language typescript`
+
+2. `v16.17.1 >> .nvmrc`
+
+3. `npm init @eslint/config`, follow wizard for typescript setup
+
+4. `npm i -D prettier eslint-config-prettier`, `echo {}> .prettierrc.json`, `(echo node_modules; echo coverage;) >> .prettierignore` add prettier VS Code Extension and settings. add `"prettier"` to the end of the `extends` array in eslintrc.json
+
+5. `npm i -D jest @types/jest ts-jest`, `npx jest --init` and set `preset: "ts-jest"`, add `"scripts": { "test": "jest --coverage" },` to package.json
+
+6. `npm install --save @types/aws-lambda`, note that you use it like: `import { APIGatewayProxyHandlerV2 } from "aws-lambda";` not `import { APIGatewayProxyHandlerV2 } from "@types/aws-lambda";`
