@@ -1,10 +1,4 @@
-import {
-  CfnOutput,
-  CfnRefElement,
-  CfnResource,
-  Stack,
-  StackProps,
-} from "aws-cdk-lib";
+import { CfnOutput, CfnResource, Stack, StackProps } from "aws-cdk-lib";
 import { Construct } from "constructs";
 import { Vpc } from "aws-cdk-lib/aws-ec2";
 import { Cluster, ContainerImage } from "aws-cdk-lib/aws-ecs";
