@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 import "source-map-support/register";
 import * as cdk from "aws-cdk-lib";
-import { ApigatFargateCdkStack } from "../lib/apigat-fargate-cdk-stack";
+import { MainCdkStack } from "../lib/main";
 
 const app = new cdk.App();
-new ApigatFargateCdkStack(app, "ApigatFargateCdkStack", {
+new MainCdkStack(app, "ApigatFargateCdkStack", {
   /* If you don't specify 'env', this stack will be environment-agnostic.
    * Account/Region-dependent features and context lookups will not work,
    * but a single synthesized template can be deployed anywhere. */
