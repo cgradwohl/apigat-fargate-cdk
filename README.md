@@ -93,4 +93,4 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
 3. `npm init @eslint/config`, follow wizard for typescript setup
 
-4. `npm i -D prettier eslint-config-prettier`, `echo {}> .prettierrc.json`, `(echo node_modules; echo coverage;) >> .prettierignore` add prettier VS Code Extension and settings. add `"prettier"` to the end of the `extends` array in eslintrc.json
+4. `npm i -D prettier eslint-config-prettier`, `echo {}> .prettierrc.json`, `(echo node_modules; echo coverage;) >> .prettierignore` add prettier VS Code Extension and settings. add `"prettier"` to the end of the `extends` array in eslintrc.json, `npx prettier --write .`
