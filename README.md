@@ -2,6 +2,8 @@
 
 - see `NOTES.md` for useful descriptions of technologies used in this POC
 
+![image info](ApiGateway_ECSFargate_POC.jpg)
+
 ## Project Overview
 
 - `bin/app.ts` - defines the application, which has only 1 stack.

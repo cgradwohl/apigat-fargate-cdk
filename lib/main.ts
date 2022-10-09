@@ -24,6 +24,12 @@ export class MainCdkStack extends Stack {
       vpc: vpc,
     });
 
+    /**
+     * NOTE:
+     * ApplicationLoadBalancedFargateService is an L2 Construct
+     * We would need to consider how to create the same construct using the L1 CfnResource Construct
+     * or at least understand the tradeoffs.
+     */
     const fargate = new ApplicationLoadBalancedFargateService(
       this,
       "MyFargateService",
