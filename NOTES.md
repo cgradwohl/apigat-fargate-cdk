@@ -71,6 +71,16 @@
 - `bastion host`
   - a bastion host allows inbound access to specific IP addresses and authenticated users
 
+## Application Load Balancer
+
+- In the micro-service architecture, one service don’t know the location of the other services.
+- In the world of containers, container’s IP addresses can’t be reliable since they are constantly being created and torn down by Fargate.
+- ALB provides a simple and effective solution to this problem.
+- API Gateway communicates via a public subnet to the ALB.
+- The ALB then routes the request to an available container.
+- As Fargate scales up to more containers, they are registered dynamically to the ALB.
+- The ALB will always redirect the traffic to least used node, and thus the traffic is scaled horizontally.
+
 ## Repo Setup Notes
 
 1. `mkdir repo-name; cd repo-name; npx cdk init app --language typescript`
