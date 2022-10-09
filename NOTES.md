@@ -3,6 +3,12 @@
 - provision initial resources required to deploy into an AWS Account
 - bootstrapping provisions a deployment S3 bucket, IAM roles etc.
 
+#### Useful Bootstrap Command Examples
+
+`cdk bootstrap ACCOUNT-NUMBER/REGION`
+`cdk bootstrap 1111111111/us-east-1`
+`cdk bootstrap --profile test 1111111111/us-east-1`
+
 ## Docker
 
 - Docker is a platform that enables developers to run their applications in containers.
