@@ -13,6 +13,11 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 - `cdk diff` compare deployed stack with current state
 - `cdk synth` emits the synthesized CloudFormation template
 
+## CDK Bootstrap
+
+- provision initial resources required to deploy into an AWS Account
+- bootstrapping provisions a deployment S3 bucket, IAM roles etc.
+
 ## Docker
 
 - Docker is a platform that enables developers to run their applications in containers.
