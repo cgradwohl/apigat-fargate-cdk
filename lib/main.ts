@@ -1,9 +1,9 @@
 import { CfnOutput, CfnResource, Stack, StackProps } from "aws-cdk-lib";
 import { Construct } from "constructs";
 import { Vpc } from "aws-cdk-lib/aws-ec2";
-import { Cluster, ContainerImage } from "aws-cdk-lib/aws-ecs";
+import { Cluster, ContainerImage, CpuArchitecture } from "aws-cdk-lib/aws-ecs";
 import { ApplicationLoadBalancedFargateService } from "aws-cdk-lib/aws-ecs-patterns";
-import { CfnIntegration, CfnRoute, CfnApi } from "aws-cdk-lib/aws-apigatewayv2";
+import { CfnIntegration, CfnRoute } from "aws-cdk-lib/aws-apigatewayv2";
 import { HttpApi } from "@aws-cdk/aws-apigatewayv2-alpha";
 import path = require("path");
 
@@ -32,6 +32,9 @@ export class MainCdkStack extends Stack {
         taskImageOptions: {
           image: ContainerImage.fromAsset(path.join(__dirname, "../api/")),
         },
+        runtimePlatform: {
+          cpuArchitecture: CpuArchitecture.ARM64,
+        },
       }
     );
 
@@ -43,37 +46,15 @@ export class MainCdkStack extends Stack {
       },
     });
 
-    /**
-     * Create a new API Gateway HTTP API endpoint.
-     * @resource AWS::ApiGatewayV2::Api
-     */
+    // NOTE: this is an L2 construct
     const api = new HttpApi(this, "HttpApiGateway", {
       apiName: "ApigwFargate",
       description:
         "Integration between apigw and Application Load-Balanced Fargate Service",
     });
 
-    console.log("api.ref ::", api.httpApiId);
-    console.log("api.erl ::", api.url);
-
-    /**
-     * Create a new `AWS::ApiGatewayV2::Api`.
-     *
-     * @param scope - scope in which this resource is defined
-     * @param id    - scoped id of the resource
-     * @param props - resource properties
-     */
-    const cfnApi = new CfnApi(this, "MyCfnApi", {
-      description: "description",
-      name: "name",
-    });
-
-    console.log("cfnApi.ref", cfnApi.ref);
-    console.log("cfnApi.attrApiEndpoint", cfnApi.attrApiEndpoint);
-
     const integration = new CfnIntegration(this, "HttpApiGatewayIntegration", {
       apiId: api.httpApiId,
-      // apiId: cfnApi.ref,
       connectionId: httpVpcLink.ref,
       connectionType: "VPC_LINK",
       description: "API Integration with AWS Fargate Service",
@@ -85,7 +66,6 @@ export class MainCdkStack extends Stack {
 
     new CfnRoute(this, "Route", {
       apiId: api.httpApiId,
-      // apiId: cfnApi.ref,
       routeKey: "GET /", // for something more general use 'ANY /{proxy+}'
       target: `integrations/${integration.ref}`,
     });
@@ -93,7 +73,6 @@ export class MainCdkStack extends Stack {
     new CfnOutput(this, "APIGatewayUrl", {
       description: "API Gateway URL to access the GET endpoint",
       value: api.url!,
-      // value: cfnApi.attrApiEndpoint!,
     });
   }
 }
