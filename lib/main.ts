@@ -61,6 +61,7 @@ export class MainCdkStack extends Stack {
      * NOTE:
      * HttpApi is an L2 Construct with a decent override API
      * We would need to consider how to create the same construct using the L1 CfnResource Construct
+     * or at least understand the tradeoffs.
      */
     const api = new HttpApi(this, "HttpApiGateway", {
       apiName: "ApigwFargate",
