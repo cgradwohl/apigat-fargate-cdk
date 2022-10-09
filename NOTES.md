@@ -75,7 +75,7 @@
 
 1. `mkdir repo-name; cd repo-name; npx cdk init app --language typescript`
 
-2. `v16.17.1 >> .nvmrc`
+2. `echo v16.17.1 >> .nvmrc`
 
 3. `npm init @eslint/config`, follow wizard for typescript setup
 
