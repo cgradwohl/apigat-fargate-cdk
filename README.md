@@ -20,6 +20,6 @@
 
 ## Project Overview
 
-- `app` - defines the CloudFormation application, which has only 1 stack.
+- `app/` - defines the CloudFormation application, which has only 1 stack.
 - `lib/main.ts` describes the App main stack which includes a ApiGateway and HTTP Endpoint, VPC, ECS Cluster, Fargate Integration
 - `api/` contains an Express.js application and its Docker Container Image definition. This will be run as an ECS Task. (NOTE: this image is built at deploy time on the host machine i.e. your laptop)
