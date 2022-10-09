@@ -1,7 +1,7 @@
 ## CDK Bootstrap
 
 - provision initial resources required to deploy into an AWS Account
-- bootstrapping provisions a deployment S3 bucket, IAM roles etc.
+- bootstrapping provisions a deployment S3 bucket, IAM deployment roles etc.
 
 #### Useful Bootstrap Command Examples
 
