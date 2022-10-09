@@ -1,12 +1,13 @@
 # Api Gateway + ECS Fargate POC
 
 - The `cdk.json` file tells the CDK Toolkit how to execute your app.
+- see `NOTES.md` for useful descriptions of technologies used in this POC
 
 ## Deploy Instructions
 
 1. clone the repo and cd into it
 2. `npm install`
-3. `npx cdk bootstrap` (this will use your default AWS profile, see NOTES.md for details and options)
+3. `npx cdk bootstrap` (this will use your default AWS profile, see `NOTES.md` for details and options)
 4. `npx cdk deploy`
 
 ## Useful commands
