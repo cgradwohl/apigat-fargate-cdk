@@ -11,6 +11,11 @@ export class MainCdkStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 
+    /**
+     * TODO:
+     * - create a public, private(with NAT Gateway), and vpc-only subnets
+     * - create a bastion host with an auto scaling group role
+     */
     const vpc = new Vpc(this, "MyVpc", {
       maxAzs: 3,
     });
@@ -32,6 +37,12 @@ export class MainCdkStack extends Stack {
         taskImageOptions: {
           image: ContainerImage.fromAsset(path.join(__dirname, "../api/")),
         },
+        /**
+         * NOTE:
+         * - this is dependant on the machine the stack is deployed from.
+         * - this image is built at deploy time
+         * - this needs to be considered when adding CI/CD
+         */
         runtimePlatform: {
           cpuArchitecture: CpuArchitecture.ARM64,
         },
@@ -46,7 +57,11 @@ export class MainCdkStack extends Stack {
       },
     });
 
-    // NOTE: this is an L2 construct
+    /**
+     * NOTE:
+     * HttpApi is an L2 Construct with a decent override API
+     * We would need to consider how to create the same construct using the L1 CfnResource Construct
+     */
     const api = new HttpApi(this, "HttpApiGateway", {
       apiName: "ApigwFargate",
       description:
