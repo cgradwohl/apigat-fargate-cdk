@@ -17,6 +17,7 @@
 2. `npm install`
 3. `npx cdk bootstrap` (this will use your default AWS profile, see `NOTES.md` for details and options)
 4. `npx cdk deploy`
+5. `curl --location --request GET '<API GATEWAY URL OUTPUT>'`
 
 ## Other Useful commands
 
