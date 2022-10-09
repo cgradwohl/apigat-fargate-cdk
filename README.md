@@ -2,7 +2,7 @@
 
 - see `NOTES.md` for useful descriptions of technologies used in this POC
 
-![image info](ApiGateway_ECSFargate_POC.jpg)
+![Api Gateway and ECS Fargate POC Architecture Diagram](architecture.jpg)
 
 ## Project Overview
 
